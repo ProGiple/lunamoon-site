@@ -2,26 +2,36 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
   createBrowserRouter,
+  Outlet,
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
 import { MainPage } from './Apps/Main-page/App'
 import { Header } from './Apps/elements/Header';
+import { ErrorPage } from './Apps/Error-page/App';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
+    errorElement: <ErrorPage />,
+    element: 
+    <>
+      <Header />
+      <MainPage />
+    </>
   },
   {
     path: "/banlist",
-    element: <div>Ban list</div>
+    element: 
+    <>
+      <Header />
+      <div>Ban list</div>
+    </> 
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Header />
     <RouterProvider router={router} />
   </StrictMode>
 )
