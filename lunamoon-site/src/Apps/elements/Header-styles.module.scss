@@ -1,0 +1,60 @@
+$primary: rgb(176, 20, 207);
+$secondary: white;
+
+.headerBlock {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100px;
+
+    border-radius: 0px 0px 22px 22px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.45);
+    
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.flex_item {
+    box-sizing: border-box;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.headerText {
+    font-size: 23px;
+    position: relative;
+    color: $secondary;
+    transition: 0.3s;
+}
+
+.headerText:hover {
+    margin-top: 1px;
+}
+
+.headerText::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: $primary;
+    transition: width 0.3s, left 0.3s;
+    box-shadow: 0 -3px 6px $primary;
+}
+
+.headerText:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.img_mainLogo {
+    height: 10%;
+    width: 75px;
+    margin-left: 5%;
+}
