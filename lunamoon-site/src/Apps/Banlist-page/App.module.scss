@@ -29,7 +29,7 @@ input, select {
     font-family: 'Gilroy-light'; 
     font-size: 19px;
     margin: 4px 4px 0 4px;
-    border: 0px solid white;
+    border: 0px solid $secondary;
     border-bottom-width: 2px;
     border-radius: 1px;
     background: rgb(247, 247, 247, 0);
@@ -52,10 +52,27 @@ input::placeholder {
 
 input:focus::placeholder {
     font-size: 75%;
-    color: white;
+    color: $secondary;
 }
 
 option {
     text-align: center;
     background: rgba(39, 39, 39, 0.8);
+}
+
+.buttons button {
+    margin: 12px 8px;
+    font-family: 'Gilroy-light';
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 0px solid $secondary;
+    border-top: 2px solid $secondary;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 15px;
+    transition: 0.22s;
+}
+
+.buttons button:hover {
+    background: rgba(255, 255, 255, 0.22);
 }
