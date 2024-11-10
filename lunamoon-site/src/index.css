@@ -5,8 +5,8 @@
 
   color-scheme: light dark;
   background: linear-gradient(to bottom right, rgb(29, 29, 29), rgb(29, 1, 21));
-  color: rgba(255, 255, 255, 0.87);
-  height: 100%;
+  color: rgb(255, 255, 255);
+  height: 100vh;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,23 +28,7 @@ a {
   text-decoration: none;
 }
 
-.body {
+body, html {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #000000;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #000000;
-  }
+  padding: 0;
 }

@@ -17,4 +17,5 @@ $primary: rgb(199, 39, 231);
 .text:hover {
     text-shadow: 0px 1px 14px $primary;
     color: $primary;
+    cursor: pointer;
 }
