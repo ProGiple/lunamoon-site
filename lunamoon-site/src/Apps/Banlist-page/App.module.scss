@@ -27,15 +27,35 @@ $secondary: white;
 
 input, select {
     font-family: 'Gilroy-light'; 
-    min-width: 1%;
-    max-width: 50%;
     font-size: 19px;
     margin: 4px 4px 0 4px;
-    border-radius: 6px;
-    border: 1px solid rgb(176, 20, 207, 0.4);
-    background: rgb(247, 247, 247, 0.1);
+    border: 0px solid white;
+    border-bottom-width: 2px;
+    border-radius: 1px;
+    background: rgb(247, 247, 247, 0);
+    transition: 0.34s;
 }
 
-input {
-    
+input:focus, select:focus {
+    border-radius: 5px;
+    outline: none;
+    border: 0px solid $primary;
+    border-bottom-width: 2px;
+    background: rgba(59, 59, 59, 0.4);
+}
+
+input::placeholder {
+    font-size: 90%;
+    color: rgb(153, 153, 153);
+    transition: 0.3s;
+}
+
+input:focus::placeholder {
+    font-size: 75%;
+    color: white;
+}
+
+option {
+    text-align: center;
+    background: rgba(39, 39, 39, 0.8);
 }

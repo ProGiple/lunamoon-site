@@ -30,8 +30,11 @@ $secondary: white;
 }
 
 .headerText:hover {
-    margin-top: 1px;
     cursor: pointer;
+}
+
+.flex_item:hover > .headerText {
+    margin-top: 1px;
 }
 
 .headerText::before {

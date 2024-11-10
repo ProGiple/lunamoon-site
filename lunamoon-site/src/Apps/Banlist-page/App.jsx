@@ -20,11 +20,7 @@ export function BanListPage() {
     const [page, setPage] = useState(1)
     const [filterType, setFilterType] = useState("")
     const [searchTerm, setSearchTerm] = useState("")
-
-    const handlePageChange = (event) => {
-        var localPage = event.target.value
-        if (localPage >= 1 && localPage <= Math.ceil(filteredData.length / -sliceAmount)) setPage(localPage)
-    }  
+  
     const handleFilterChange = (event) => {
         setFilterType(event.target.value)
     }  
@@ -37,6 +33,8 @@ export function BanListPage() {
         return (!searchTerm || searchRegex.test(item.bannedNick) || searchRegex.test(item.adminNick)) &&
                (!filterType || item.type === filterType);
     })
+
+    const getPages = Math.ceil(filteredData.length / -sliceAmount)
 
     return (
         <div className={styles.block}>
@@ -53,26 +51,21 @@ export function BanListPage() {
                         placeholder="Поиск по игрокам..."
                         value={searchTerm}
                         onChange={handleSearchEnter} />
-                    <input
-                        type="number"
-                        placeholder='Страница'
-                        value={page}
-                        onChange={handlePageChange} />
                 </div>
-                <h3>Страниц: {Math.ceil(filteredData.length / -sliceAmount)}</h3>
+                <h3>Страниц: {getPages}</h3>
                 <table className={styles.flex_item}>
                     <thead>
                         <tr>
                             {filteredData.length !== 0 ?
-                            <>
-                                <th>Игрок</th>
-                                <th>Сотрудник</th>
-                                <th>Причина</th>
-                                <th>Дата</th>
-                                <th>Истечение</th>
-                                <th>Тип</th>
-                            </> : <th>Ничего не найдено!</th>
-                        }
+                                <>
+                                    <th>Игрок</th>
+                                    <th>Сотрудник</th>
+                                    <th>Причина</th>
+                                    <th>Дата</th>
+                                    <th>Истечение</th>
+                                    <th>Тип</th>
+                                </> : <th>Ничего не найдено!</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -90,6 +83,11 @@ export function BanListPage() {
                         ))}
                     </tbody>
                 </table>
+                <div className={styles.buttons}>
+                    {page !== 1 ? <button onClick={() => setPage(1)}>..1</button> : null}
+                    {page > 1 ? <button onClick={() => setPage(page - 1)}>«</button> : null}
+                    {getPages > page + 1 ? <button onClick={() => setPage(page + 1)}>»</button> : null}
+                </div>
         </div>
     )
 }
