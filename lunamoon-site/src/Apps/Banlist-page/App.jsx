@@ -27,14 +27,10 @@ export function BanListPage() {
     }, [unSortedData])
 
     const [page, setPage] = useState(1)
-    const [filterType, setFilterType] = useState("")
     const [searchTerm, setSearchTerm] = useState("")
     const [tableHasOpacity, setTableHasOpacity] = useState(true)
-  
-    const handleFilterChange = (event) => {
-        if (page !== 1) handleSetPage(1)
-        setFilterType(event.target.value)  
-    }  
+    const [checkboxValues, setCheckboxValues] = useState({ mutes: false, warns: false, bans: false });
+ 
     const handleSearchEnter = (event) => {
         if (page !== 1) handleSetPage(1)
         setSearchTerm(event.target.value)
@@ -48,13 +44,20 @@ export function BanListPage() {
             }, 15)
         }, 325)
     }
+    const handleCheckboxChange = (event) => {
+        const { name, checked } = event.target;
+        setCheckboxValues(prevState => ({
+            ...prevState,
+            [name]: checked
+        }));
+    };
 
     const filteredData = useMemo(() => {
         return data.filter((item) => 
-            (!searchTerm || item.bannedNick.toLowerCase().startsWith(searchTerm.toLowerCase())) &&
-            (!filterType || item.type === filterType)
+            (!searchTerm || item.bannedNick.toLowerCase().startsWith(searchTerm.toLowerCase()))
+            && ((!checkboxValues.bans && !checkboxValues.mutes && !checkboxValues.warns) || (checkboxValues.bans && item.type == 'Бан') || (checkboxValues.mutes && item.type == 'Мут') || (checkboxValues.warns && item.type == 'Варн'))
         );
-    }, [data, searchTerm, filterType])
+    }, [data, searchTerm, checkboxValues])
 
     const getPages = Math.ceil(filteredData.length / -sliceAmount)
 
@@ -62,19 +65,24 @@ export function BanListPage() {
         <div className={styles.block}>
             <h2 className={`${styles.text} ${styles.flex_item}`}>Список наказаний</h2>
                 <div className={styles.flex_item}>
-                    <select value={filterType} onChange={handleFilterChange} className={styles.select_block}>
-                        <option value="">Все типы</option>
-                        <option value="Мут">Мут</option>
-                        <option value="Бан">Бан</option>
-                        <option value="Варн">Варн</option>
-                    </select>
+                    <div className={styles.checkBoxes}>
+                        <span className={styles.text}>Показать:</span>
+                        <input type="checkbox" name="warns" checked={checkboxValues.checkbox1} onChange={handleCheckboxChange} />
+                        <label htmlFor="warns">Варны</label>
+
+                        <input type="checkbox" name="mutes" checked={checkboxValues.checkbox2} onChange={handleCheckboxChange} />
+                        <label htmlFor="mutes">Муты</label>
+
+                        <input type="checkbox" name="bans" checked={checkboxValues.checkbox2} onChange={handleCheckboxChange} />
+                        <label htmlFor="bans">Баны</label>
+                    </div>
                     <input
                         type="text"
                         placeholder="Поиск по игрокам..."
                         value={searchTerm}
                         onChange={handleSearchEnter} />
                 </div>
-                <h3 className={`${styles.text} ${styles.flex_item}`}>Страница: {page}</h3>
+                <h3 className={`${styles.text} ${styles.flex_item}`}>Страница: {page} / {getPages}</h3>
 
                 {filteredData.length === 0 ? 'Ничего не найдено!' : <>
                     <table className={`${styles.flex_item} ${tableHasOpacity ? null : tableStyles.opacity}`}>
