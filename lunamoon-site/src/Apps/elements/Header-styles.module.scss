@@ -27,10 +27,18 @@ $secondary: white;
     position: relative;
     color: $secondary;
     transition: 0.3s;
+    text-shadow: 0 0 10px $secondary,
+            0 0 20px $secondary,
+            0 0 40px $secondary,
+            0 0 80px $secondary;
 }
 
 .headerText:hover {
     cursor: pointer;
+    text-shadow: 0 0 5px $secondary,
+            0 0 10px $secondary,
+            0 0 20px $secondary,
+            0 0 40px $secondary;
 }
 
 .flex_item:hover > .headerText {
@@ -45,17 +53,21 @@ $secondary: white;
     bottom: 0;
     left: 50%;
     background-color: $primary;
-    transition: width 0.3s, left 0.3s;
-    box-shadow: 0 -3px 6px $primary;
+    transition: 0.3s;
 }
 
 .headerText:hover::before {
     width: 100%;
     left: 0;
+    box-shadow: 0 0 10px 3px $primary,
+            0 0 20px 3px $primary,
+            0 0 40px 3px $primary,
+            0 0 80px 3px $primary;
 }
 
 .img_mainLogo {
     height: 10%;
     width: 75px;
     margin-left: 5%;
+    filter: drop-shadow(0 0 20px $primary);
 }

@@ -1,8 +1,12 @@
+$primary: white;
+$sec: rgb(202, 102, 223);
+
 table {
     border-collapse: collapse;
     font-size: 18px;
     border-radius: 15px;
     background: rgba(160, 160, 160, 0.1);
+    transition: 0.3s;
 }
 
 th {
@@ -14,9 +18,13 @@ th.reason {
 }
 
 thead {
-    background-color: white;
+    background-color: $primary;
     color: black;
-    transition: 0.5s;
+    transition: 0.3s;
+    box-shadow: 0 0 10px $primary,
+            0 0 20px $primary,
+            0 0 40px $primary,
+            0 0 5px $primary;
 }
 
 tr.classic {
@@ -28,10 +36,25 @@ tr.classic:nth-last-of-type(even) {
 }
 
 tr.classic:hover {
-    color: rgb(216, 148, 231);
+    color: $sec;
     text-shadow: 0 0 10px black;
+    box-shadow: 0 0 5px $sec,
+                0 0 10px $sec,
+                0 0 20px $sec,
+                0 0 40px $sec,
+                inset 0 0 5px $sec,
+                inset 0 0 10px $sec;
 }
 
-thead:hover {
-    background: rgba(221, 221, 221, 0.8)
+tbody:hover + thead {
+    box-shadow: none;
+}
+
+tbody:hover tr:not(:hover) {
+    filter: blur(4px);
+    opacity: 0.56;
+}
+
+.opacity {
+    opacity: 0;
 }
