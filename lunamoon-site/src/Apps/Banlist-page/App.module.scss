@@ -82,3 +82,13 @@ option {
 .buttons button:hover {
     background: rgba(255, 255, 255, 0.22);
 }
+
+.checkBox {
+    width: 40px;
+}
+
+.mark {
+    width: 14px;
+    transform: translateY(20%);
+    filter: drop-shadow(0 0 5px $secondary);
+}

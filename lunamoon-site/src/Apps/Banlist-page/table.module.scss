@@ -11,10 +11,8 @@ table {
 
 th {
     padding: 8px 10px;
-}
-
-th.reason {
     border: 1px solid rgba(160, 160, 160, 0.1);
+    transition: 0.3s;
 }
 
 thead {
@@ -27,6 +25,21 @@ thead {
             0 0 5px $primary;
 }
 
+th.inline {
+    position: relative;
+    padding-left: 50px;
+}
+
+th.inline img {
+    position: absolute; 
+    left: 15px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; 
+    height: 24px;
+    object-fit: cover; 
+}
+
 tr.classic {
     transition: 0.3s;
 }
@@ -36,8 +49,8 @@ tr.classic:nth-last-of-type(even) {
 }
 
 tr.classic:hover {
-    color: $sec;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px $primary,
+                0 0 20px $primary;
     box-shadow: 0 0 5px $sec,
                 0 0 10px $sec,
                 0 0 20px $sec,
@@ -51,7 +64,6 @@ tbody:hover + thead {
 }
 
 tbody:hover tr:not(:hover) {
-    filter: blur(4px);
     opacity: 0.56;
 }
 
