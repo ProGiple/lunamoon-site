@@ -20,7 +20,7 @@ export function BanListPage() {
         { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
         { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
         { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
-        { bannedNick: 'ProGiple', adminNick: 'Dakota_', reason: 'захотел', date: '09.11.2024', end: '08.10.2023', type: 'Мут' },
+        { bannedNick: 'ProGiple', adminNick: 'Console', reason: '[А.Ч.] 1.1 - Игра с запрещённым ПО', date: '09.11.2024', end: '08.10.2023', type: 'Мут' },
     ];
 
     const data = useMemo(() => {
