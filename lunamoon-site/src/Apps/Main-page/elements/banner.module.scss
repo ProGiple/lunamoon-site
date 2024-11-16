@@ -1,0 +1,96 @@
+$primary: rgb(176, 20, 207);
+$secondary: white;
+
+.infoBox {
+    width: 60%;
+    height: 200px;
+    background: rgba($color: #000000, $alpha: 0.25);
+    margin: 3% 20%;
+    box-shadow: 0 0 5px $primary,
+                0 0 10px $primary,
+                0 0 20px $primary;
+    border-radius: 15px;
+    border: 2px solid $primary;
+    overflow: hidden;
+    transition: 0.35s;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.infoBox:hover {
+    box-shadow: 0 0 10px $primary,
+                0 0 20px $primary,
+                0 0 40px $primary;
+}
+
+.infoBox .player {
+    height: 125%;
+    margin-left: 5%;
+    margin-top: 1.5%;
+    transition: 0.35s;
+    padding-right: 3%;
+}
+
+.infoBox:hover .player {
+    margin-left: 3%;
+    padding-right: 6%;
+    filter: blur(1px);
+}
+
+.text {
+    font-family: 'Gilroy-light';
+    color: $secondary;
+    text-align: center;
+    text-shadow: 0 0 10px $secondary,
+            0 0 20px $secondary,
+            0 0 40px $secondary,
+            0 0 80px $secondary;
+}
+
+.header {
+    color: $primary;
+    text-shadow: 0 0 10px $primary,
+            0 0 20px $primary,
+            0 0 40px $primary,
+            0 0 80px $primary;
+}
+
+.buttons {
+    margin-left: 4%;
+}
+
+button {
+    font-family: 'Gilroy-light';
+    font-size: 120%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid $secondary;
+    width: 210px;
+    vertical-align: middle;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    transition: 0.3s;
+
+    display: flex;
+    justify-content: center;
+}
+
+button:hover {
+    border-bottom: 2px solid $primary;
+    border-radius: 5px;
+    font-size: 110%;
+}
+
+.clickable {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transform: translateX(-8%);
+}
+
+button img {
+    max-width: 10%;
+    max-height: 10%;
+}

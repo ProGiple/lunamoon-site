@@ -32,7 +32,7 @@ export function BanListPage() {
     const [searchAdmin, setSearchAdmin] = useState("")
 
     const [tableHasOpacity, setTableHasOpacity] = useState(true)
-    const [checkboxValues, setCheckboxValues] = useState({ mutes: false, warns: false, bans: false });
+    const [checkboxValues, setCheckboxValues] = useState({ mutes: false, warns: false, bans: false, kicks: false });
  
     const handleSearchPlayer = (event) => {
         if (page !== 1) handleSetPage(1)
@@ -64,7 +64,9 @@ export function BanListPage() {
     const filteredData = useMemo(() => {
         return data.filter((item) => 
             (!searchPlayer || item.bannedNick.toLowerCase().startsWith(searchPlayer.toLowerCase())) && item.adminNick.toLowerCase().startsWith(searchAdmin.toLowerCase())
-            && ((!checkboxValues.bans && !checkboxValues.mutes && !checkboxValues.warns) || (checkboxValues.bans && item.type == 'Бан') || (checkboxValues.mutes && item.type == 'Мут') || (checkboxValues.warns && item.type == 'Варн'))
+            && ((!checkboxValues.bans && !checkboxValues.mutes && !checkboxValues.warns && !checkboxValues.kicks) 
+            || (checkboxValues.bans && item.type == 'Бан') || (checkboxValues.mutes && item.type == 'Мут')
+            || (checkboxValues.warns && item.type == 'Варн') || (checkboxValues.kicks && item.type == 'Кик'))
         );
     }, [data, searchPlayer, checkboxValues])
 
@@ -84,6 +86,9 @@ export function BanListPage() {
 
                         <input type="checkbox" name="bans" checked={checkboxValues.bans} className={styles.checkBox} onChange={handleCheckboxChange} />
                         <label htmlFor="bans">Баны</label>
+
+                        <input type="checkbox" name="kicks" checked={checkboxValues.kicks} className={styles.checkBox} onChange={handleCheckboxChange} />
+                        <label htmlFor="kicks">Кики</label>
                     </div>
                     <div>
                         <input
@@ -109,7 +114,7 @@ export function BanListPage() {
                                     <tr className={tableStyles.classic} key={index}>
                                         <th className={tableStyles.inline}><img src={`https://minotar.net/helm/${item.bannedNick}/250`} /> {item.bannedNick}</th>
                                         <th className={tableStyles.inline}><img src={`https://minotar.net/helm/${item.adminNick}/250`} /> {item.adminNick}</th>
-                                        <th className={tableStyles.reason}>{item.reason}</th>
+                                        <th>{item.reason}</th>
                                         <th>{item.date}</th>
                                         <th>{item.end}</th>
                                         <th>{item.type}</th>

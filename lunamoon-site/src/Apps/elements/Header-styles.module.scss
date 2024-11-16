@@ -14,6 +14,8 @@ $secondary: white;
     align-items: center;
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .flex_item {
@@ -70,4 +72,42 @@ $secondary: white;
     width: 75px;
     margin-left: 5%;
     filter: drop-shadow(0 0 20px $primary);
+}
+
+.online {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.online h3 {
+    font-size: 17px;
+    color: $secondary;
+    text-shadow: 0 0 10px $secondary,
+            0 0 20px $secondary,
+            0 0 40px $secondary,
+            0 0 80px $secondary;
+}
+
+.bar {
+    width: 120%;
+    height: 5px;
+    background: rgba($color: #ffffff, $alpha: 0.1);
+    border-radius: 15px;
+    margin-top: -10%;
+    margin-bottom: 10%;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 15px;
+    background-color: $primary;
+
+    box-shadow: 0 0 10px 3px $primary,
+            0 0 20px 3px $primary,
+            0 0 40px 3px $primary;
 }

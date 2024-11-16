@@ -1,9 +1,10 @@
-import { Header } from "../elements/Header";
+import styles from "./App.module.scss";
+import { Banner } from "./elements/Banner";
 
 export function MainPage() {
-  return (
-    <>
-      
-    </>
-  )
+    return (
+      <>
+          <Banner />
+      </>
+    )
 }
