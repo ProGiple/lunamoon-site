@@ -1,11 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './Header-styles.module.scss'
+import { useMemo } from 'react';
 
 export function Header() {
     const navigate = useNavigate();
 
-    const online = 250;
+    const online = 100;
     const maxOnline = 500;
+
+    const getBarOnline = useMemo(() => {
+        var procent = (online / maxOnline) * 100;
+        return (procent > 100 ? 100 : procent);
+    }, [online, maxOnline])
+
     return (
         <>
             <div className={styles.headerBlock}>
@@ -28,7 +35,7 @@ export function Header() {
                 <div className={`${styles.online}`}>
                     <h3>Онлайн: {online} / {maxOnline}</h3>
                     <div className={styles.bar}>
-                        <div className={styles.fill} style={{width: `${(online / maxOnline) * 100}%`}} />
+                        <div className={styles.fill} style={{width: `${getBarOnline}%`}} />
                     </div>
                 </div>
             </div>
