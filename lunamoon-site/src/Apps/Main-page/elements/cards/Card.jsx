@@ -3,6 +3,7 @@ import styles from './Card.module.scss';
 import modalStyles from './Modal.module.scss';
 
 export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}] }) {
+    const costs = [sellItem.cost1, sellItem.cost2, sellItem.cost3];
     const [modalIsOpen, setOpenModal] = useState(false);
     const toggleModal = () => {
         setOpenModal(!modalIsOpen);
@@ -28,6 +29,18 @@ export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}]
                         <h3 className={modalStyles.header}>
                             Товар "{sellItem.name}"
                         </h3>
+
+                        <div className={modalStyles.costBox}>
+                            {sellItem.type !== 'Привилегии' ? 
+                                <div className={modalStyles.costButton}> 
+
+                                </div> : costs.map((cost, index) => {
+                                    return <button key={index} className={modalStyles.costButton}>
+                                        {cost}₽
+                                    </button>
+                                })
+                            }
+                        </div>
                 </div>
             </div>
           ) : null;

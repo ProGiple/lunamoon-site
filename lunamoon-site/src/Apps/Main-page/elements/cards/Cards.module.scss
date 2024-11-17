@@ -5,6 +5,10 @@ $r: 12px;
     opacity: 0;
 }
 
+.blur {
+    filter: blur(15px);
+}
+
 .block {
     background: rgba($color: #ffffff, $alpha: 0.1);
     width: 95%;
@@ -12,6 +16,11 @@ $r: 12px;
     height: auto;
     padding: 10px 0;
     border-radius: $r;
+    transition: 0.3s;
+}
+
+.card {
+    opacity: 1;
     transition: 0.3s;
 }
 
@@ -77,4 +86,5 @@ $r: 12px;
     flex-direction: row;
     flex: 1;
     justify-content: flex-start;
+    transition: 0.3s;
 }

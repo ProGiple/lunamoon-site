@@ -1,8 +1,6 @@
 $shadow: rgb(176, 20, 207);
 
 .modal {
-    width: 600px;
-    height: 500px;
     background: rgb(29, 1, 21);
     border: 4px solid white;
     border-radius: 15px;
@@ -10,6 +8,7 @@ $shadow: rgb(176, 20, 207);
 
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
     font-family: 'Gilroy-light';
     overflow: hidden;
@@ -55,4 +54,9 @@ $shadow: rgb(176, 20, 207);
 
 .background_disActive {
     opacity: 0.0;
+}
+
+.costBox {
+    max-width: 200px;
+    max-height: 100px;
 }

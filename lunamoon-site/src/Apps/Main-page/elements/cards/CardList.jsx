@@ -3,7 +3,7 @@ import styles from './Cards.module.scss';
 import { Card } from './Card';
 export function CardList() {
     const cards = [
-        { type: 'Привилегии', name: 'Странник', lore: 'Хэллоу!', cost1: 39, cost2: 79, cost: 90, image: "strannik" },
+        { type: 'Привилегии', name: 'Странник', lore: 'Хэллоу!', cost1: 39, cost2: 79, cost3: 90, image: "strannik" },
         { type: 'Предметы', name: 'Спавнер', lore: 'Хэллоу!', cost1: 79, cost2: 79, cost3: 79, image: "/img1.png" },
         { type: 'Привилегии', name: 'Луна', lore: 'Хэллоу!', cost1: 1299, cost2: 3909, cost3: 8888, image: "luna" },
         { type: 'Плюшки', name: 'Свой титул', lore: 'Хэллоу!', cost1: 249, cost2: 249, cost3: 249, image: "/img1.png" }
@@ -18,6 +18,18 @@ export function CardList() {
     }, [cards])
 
     const [listType, setListType] = useState(cardsTypes[0]);
+    const [hideProducts, setHideProducts] = useState(false);
+
+    const handleEditCategory = (newType) => {
+        if (listType !== newType) {
+            setHideProducts(true);
+
+        setTimeout(() => {
+            setHideProducts(false);
+            setListType(newType);
+        }, 301)
+        }
+    }
 
     return (
         <>
@@ -27,12 +39,12 @@ export function CardList() {
                         {cardsTypes.map((type, index) => {
                             return (
                                 <div className={`${styles.typeText} ${type === listType ? styles.selectedType : styles.unSelectedType}`} 
-                                    onClick={() => {setListType(type)}} key={index}>{type}</div>
+                                    onClick={() => {handleEditCategory(type)}} key={index}>{type}</div>
                             ); 
-                        })} 
+                        })}
                     </div>
                 </div>
-                <div className={`${styles.productBlock}`}>
+                <div className={`${styles.productBlock} ${hideProducts ? styles.blur : null}`}>
                     {cards.map((card, index) => {
                         if (card.type === listType) {
                             return <Card sellItem={card} key={index} />
