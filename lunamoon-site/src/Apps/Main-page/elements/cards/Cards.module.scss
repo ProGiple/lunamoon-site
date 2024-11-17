@@ -1,0 +1,80 @@
+$primary: rgb(176, 20, 207);
+$r: 12px;
+
+.opacity {
+    opacity: 0;
+}
+
+.block {
+    background: rgba($color: #ffffff, $alpha: 0.1);
+    width: 95%;
+    margin: 0 2.5%;
+    height: auto;
+    padding: 10px 0;
+    border-radius: $r;
+    transition: 0.3s;
+}
+
+.typesBlock {
+    display: flex;
+    justify-content: flex-end;
+    flex: content;
+}
+
+.typeBlock {
+    max-width: 100%;
+    height: auto;
+    background: rgba($color: #000000, $alpha: 0.25);
+    border-radius: $r;
+    margin-right: 2%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.typeText {
+    font-family: 'Gilroy-light';
+    font-size: 130%;
+    padding: 0 50px;
+
+    height: 100%;
+    border-radius: $r;
+
+    min-width: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.selectedType {
+    background: $primary;
+    box-shadow: 0 0 7px $primary,
+                0 0 14px $primary,
+                0 0 30px $primary;
+    text-shadow: 0 0 10px white,
+                0 0 20px white;
+    transition: 0.3s ease-in-out;
+}
+
+.unSelectedType {
+    transition: 0.2s ease-in;
+}
+
+.unSelectedType:hover {
+    text-shadow: 0 0 10px white,
+                0 0 20px white,
+                0 0 35px white;
+}
+
+.productBlock {
+    max-width: 45%;
+    height: auto;
+    border-radius: $r;
+    margin: 0.5% 2.5%;
+
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-start;
+}
