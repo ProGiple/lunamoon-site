@@ -27,7 +27,7 @@ export function CardList() {
         setTimeout(() => {
             setHideProducts(false);
             setListType(newType);
-        }, 301)
+        }, 150)
         }
     }
 
