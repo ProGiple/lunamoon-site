@@ -123,3 +123,15 @@ $secondary: white;
         margin-bottom: 1%;
     }
 }
+
+@media screen and (max-width: 614px) {
+    .online {
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .headerBlock {
+        flex-direction: column;
+    }
+}

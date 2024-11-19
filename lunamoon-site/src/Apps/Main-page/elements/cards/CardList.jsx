@@ -3,7 +3,7 @@ import styles from './Cards.module.scss';
 import { Card } from './Card';
 export function CardList() {
     const cards = [
-        { type: 'Привилегии', name: 'Странник', lore: 'Хэллоу!', cost1: 39, cost2: 79, cost3: 90, image: "strannik" },
+        { type: 'Привилегии', name: 'Странник', lore: 'Возможности: \n -> Нету их \n -> НИИИИИХУУУУУУЯЯЯЯЯЯЯ \n void \n Команды: \n -> /craft - открыть верстак', cost1: 39, cost2: 79, cost3: 90, image: "strannik" },
         { type: 'Предметы', name: 'Спавнер', lore: 'Хэллоу!', cost1: 79, cost2: 79, cost3: 79, image: "/img1.png" },
         { type: 'Привилегии', name: 'Луна', lore: 'Хэллоу!', cost1: 1299, cost2: 3909, cost3: 8888, image: "luna" },
         { type: 'Плюшки', name: 'Свой титул', lore: 'Хэллоу!', cost1: 249, cost2: 249, cost3: 249, image: "/img1.png" },

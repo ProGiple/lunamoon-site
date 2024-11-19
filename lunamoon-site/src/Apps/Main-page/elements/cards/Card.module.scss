@@ -21,7 +21,8 @@ $r: 15px;
                 0 0 35px $shadow;
 }
 
-.card:hover {
+.card_prop:hover {
+    transition: 0.3s;
     > .button {
         box-shadow: 0 0 7px $secondary,
                 0 0 14px $secondary,
@@ -63,3 +64,17 @@ $r: 15px;
     background-color: $secondary;
     transition: 0.3s;
 }
+
+.lore {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+
+    & > .loreLine {
+        text-shadow: 0 0 10px white,
+                    0 0 20px white,
+                    0 0 40px white;
+    }
+}
+
