@@ -74,6 +74,7 @@ export function BanListPage() {
 
     return (
         <div className={styles.block}>
+            <h2 className={`${styles.screenVisible} ${styles.text}`}>Разрешение экрана очень мало! Открой бан-лист в браузере с версии ПК или перейди на новое устройство!</h2>
             <h2 className={`${styles.text} ${styles.flex_item}`}>Список наказаний</h2>
                 <div className={styles.flex_item}>
                     <div className={styles.text}>
@@ -101,7 +102,7 @@ export function BanListPage() {
                             placeholder="Поиск по сотрудникам..."
                             value={searchAdmin}
                             onChange={handleSearchAdmin} />
-                        <img src='/mark1.png' onClick={() => {setSearchAdmin(""), setSearchPlayer(""), setCheckboxValues({ mutes:false, warns:false, bans:false })}} className={styles.mark} />
+                        <img src='/mark1.png' onClick={() => {setSearchAdmin(""), setSearchPlayer(""), setCheckboxValues({ mutes:false, warns:false, bans:false, kicks:false })}} className={styles.mark} />
                     </div>
                 </div>
                 <h3 className={`${styles.text} ${styles.flex_item}`}>Страница: {page} / {getPages}</h3>

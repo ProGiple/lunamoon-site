@@ -19,3 +19,9 @@ $primary: rgb(199, 39, 231);
     color: $primary;
     cursor: pointer;
 }
+
+@media screen and (max-width: 588px) {
+    .main_block img {
+        display: none;
+    }
+}

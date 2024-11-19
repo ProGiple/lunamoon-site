@@ -71,3 +71,37 @@ tbody:hover tr:not(:hover) {
 .opacity {
     opacity: 0;
 }
+
+@media screen and (max-width: 1111px) {
+    table {
+        min-width: 90%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    th img {
+        display: none;
+    }
+
+    th.inline {
+        padding: 8px 10px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    th:last-child {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 566px) {
+    th:nth-child(5) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    th:nth-child(3) {
+        display: none;
+    }
+}

@@ -16,7 +16,7 @@ $secondary: white;
 
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    white-space: wrap;
 }
 
 .infoBox:hover {
@@ -93,4 +93,28 @@ $secondary: white;
 .buttons button img {
     max-width: 10%;
     max-height: 10%;
+}
+
+@media only screen and (max-width: 1513px) {
+    .text {
+        font-size: 90%;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .text {
+        font-size: 75%;
+    }
+}
+
+@media only screen and (max-width: 1170px) {
+    .text {
+        font-size: 60%;
+    }
+}
+
+@media only screen and (max-width: 1052px) {
+    .infoBox {
+        display: none;
+    }
 }

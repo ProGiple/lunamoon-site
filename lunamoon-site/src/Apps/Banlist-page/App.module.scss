@@ -92,3 +92,18 @@ option {
     transform: translateY(20%);
     filter: drop-shadow(0 0 5px $secondary);
 }
+
+.screenVisible {
+    display: none;
+    white-space: wrap;
+}
+
+@media screen and (max-width: 330px) {
+    .screenVisible ~ * {
+        display: none;
+    }
+
+    .screenVisible {
+        display: block;
+    }
+}

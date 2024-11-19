@@ -49,10 +49,10 @@ export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}]
     return (
         <>
             <Modal />
-            <div className={styles.card}>
+            <div className={styles.card} onClick={() => {toggleModal()}}>
                 <img src={`/${sellItem.image}.png`} />
                 <h3>{sellItem.name}</h3>
-                <div className={styles.button} onClick={() => {toggleModal()}}>
+                <div className={styles.button}>
                     Купить: от <span className={styles.enter}>{sellItem.cost1}₽</span>
                 </div>
             </div>
