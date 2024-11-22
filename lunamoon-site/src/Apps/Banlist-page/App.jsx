@@ -74,7 +74,7 @@ export function BanListPage() {
 
     return (
         <div className={styles.block}>
-            <h2 className={`${styles.screenVisible} ${styles.text}`}>Разрешение экрана очень мало! Открой бан-лист в браузере с версии ПК или перейди на новое устройство!</h2>
+            <h2 className={`${styles.screenVisible} ${styles.text}`}>Разрешение экрана очень мало! Открой бан-лист в браузере с версии ПК или перейди на другое устройство!</h2>
             <h2 className={`${styles.text} ${styles.flex_item}`}>Список наказаний</h2>
                 <div className={styles.flex_item}>
                     <div className={styles.text}>
@@ -108,7 +108,7 @@ export function BanListPage() {
                 <h3 className={`${styles.text} ${styles.flex_item}`}>Страница: {page} / {getPages}</h3>
 
                 {filteredData.length === 0 ? <h3 className={`${styles.text} ${styles.flex_item}`}>Ничего не найдено!</h3> : <>
-                    <table className={`${styles.flex_item} ${tableHasOpacity ? null : tableStyles.opacity}`}>
+                    <table className={`${styles.flex_item} ${tableStyles.table} ${tableStyles.extend} ${tableHasOpacity ? null : tableStyles.opacity}`}>
                         <tbody>
                             {sliceData({varData: filteredData, varPage: page}).map((item, index) => (
                                 item && (

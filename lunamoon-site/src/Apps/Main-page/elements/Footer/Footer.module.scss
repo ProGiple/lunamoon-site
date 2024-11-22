@@ -1,0 +1,35 @@
+.footerBlock {
+    width: 100%;
+    height: auto;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 10px 0;
+
+    & img {
+        max-width: 80px;
+    }
+
+    & .footer {
+        display: flex;
+        align-items: center;
+    }
+
+    & .sub {
+        color: #6b6b6b;
+        max-width: 300px;
+    }
+
+    & .sub, .footer {
+        margin: 0 2%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .footerBlock .footer {
+        display: none;
+    }
+}

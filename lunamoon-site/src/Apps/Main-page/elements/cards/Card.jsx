@@ -5,11 +5,10 @@ import modalStyles from './Modal.module.scss';
 export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}] }) {
     const costs = useMemo(() => {
         return [sellItem.cost1, sellItem.cost2, sellItem.cost3];
-
     }, [sellItem.cost1, sellItem.cost2, sellItem.cost3])
     const lores = [] = useMemo(() => {
         return sellItem.lore.split('\n');
-    }, sellItem.lore)
+    }, [sellItem.lore])
 
     const [modalIsOpen, setOpenModal] = useState(false);
     const toggleModal = () => {
@@ -62,8 +61,8 @@ export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}]
                 <div className={`${modalStyles.modal} ${modalStyles.second} ${visibleContent ? null : modalStyles.modal_disActive}`} onClick={(e) => e.stopPropagation()}>
                     <h3 className={modalStyles.header}>Описание:</h3>
                     <div className={styles.lore}>
-                        {lores.map((line) => {
-                        return <span className={styles.loreLine}>{line == 'void' || line == ' void' || line == 'void ' || line == ' void ' ? 'ㅤ' : line}</span>;
+                        {lores.map((line, index) => {
+                        return <span className={styles.loreLine} key={index}>{line == 'void' || line == ' void' || line == 'void ' || line == ' void ' ? 'ㅤ' : line}</span>;
                     })}
                     </div>
                 </div>
