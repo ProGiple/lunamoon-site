@@ -1,16 +1,30 @@
 import { useMemo, useState } from 'react';
 import styles from './App.module.scss';
-import tableStyles from './table.module.scss';
 
 export function AdminPage() {
-    const unFilteredAdminList = [
-        { nick: 'ProGiple', permission: 15, url: 'https://vk.com/giple', reports: 999, fullActive: 900 },
-        { nick: 'Dakota', permission: 25, url: 'https://t.me/novasparkle', reports: 999, fullActive: 556 }
+    const allPermissions = [
+        { level: 25, name: 'Владелец', color: '#ff3bce' },
+        { level: 15, name: 'Тех. админ', color: '#ff3bce' },
+        { level: 35, name: 'Пидор', color: '#ff3bce' }
     ]
 
-    const permissionIcons = [
-        { level: 15, image: 'luna.png' },
-        { level: 25, image: 'luna.png' }
+    const permTypes = [] = useMemo(() => {
+        return (allPermissions.length === 0 ? ['NoData'] : allPermissions.reduce((types, perm) => {
+            if (!types.includes(perm.name)) {
+                return [...types, perm.name];
+            }
+            return types;
+        }, []))
+    }, [allPermissions])
+
+    const unFilteredAdminList = [
+        { nick: 'ProGiple', permission: 'Тех. админ', url: 'https://vk.com/giple', urlName: 'Страничка ВК', reports: 999, date: '24/09/2024' },
+        { nick: 'Dakota_', permission: 'Владелец', url: 'https://t.me/novasparkle', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
+        { nick: 'JESTER', permission: 'Владелец', url: 'https://t.me/jester', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
+        { nick: 'runercx', permission: 'Тех. админ', url: 'https://t.me/runercx', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
+        { nick: 'Dakota_', permission: 'Владелец', url: 'https://t.me/novasparkle', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
+        { nick: 'Dakota_', permission: 'Владелец', url: 'https://t.me/novasparkle', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
+        { nick: 'strelka_', permission: 'Пидор', url: 'https://t.me/pidoras', urlName: 'Телега', reports: 1, date: '24/10/2025' }
     ]
 
     const [searchNick, setSearchNick] = useState("");
@@ -18,44 +32,92 @@ export function AdminPage() {
         setSearchNick(event.target.value);
     }
 
-    const filteredAdminList = useMemo(() => {
-        return unFilteredAdminList.sort((a, b) => b.permission - a.permission).filter(
-            (admin) => (searchNick === '' || admin.nick.toLowerCase().startsWith(searchNick.toLowerCase())));
-    }, [unFilteredAdminList, searchNick])
+    const [searchPermission, setSearchPermission] = useState("");
+    const handleSearchPerm = (event) => {
+        setSearchPermission(event.target.value);
+    }
 
-    const getIcon = ({ level = 0 }) => {
-        const foundPerm = permissionIcons.find((perm) => perm.level === level);
+    const getPermWeight = ({ node }) => {
+        return allPermissions.find((perm) => perm.name === node).level;
+    }
+
+    const getColor = ({ node }) => {
+        const foundPerm = allPermissions.find((perm) => perm.level === getPermWeight({ node: node }));
     
         if (foundPerm) {
-            return foundPerm.image;
+            return foundPerm.color;
         }
     
-        return 'none.png';
+        return '#ff3bce';
     }
+
+    const filteredAdminList = useMemo(() => {
+        return unFilteredAdminList.sort((a, b) => getPermWeight({ node: b.permission }) - getPermWeight({ node: a.permission })).filter(
+            (admin) => (searchNick === '' || admin.nick.toLowerCase().startsWith(searchNick.toLowerCase())) && (searchPermission === '' || admin.permission === searchPermission));
+    }, [unFilteredAdminList, searchNick, allPermissions])
+
+    const [openedModal, setOpenedModal] = useState(0);
+    const open = ({ index = 0 }) => {
+        if (openedModal !== index) {
+            setOpenedModal(index);
+        }
+    }
+
+    const handleRedirect = () => {
+        window.open(filteredAdminList[openedModal].url, '_blank');
+    };
 
     return (
         <>  
-            <div className={styles.mainBlock}>
-                <input type='text' placeholder='Поиск по нику' onChange={handleSearch} />
+            <div className={`${styles.mainBlock}`}>
+                <div className={styles.filter}>
+                    <input type='text' placeholder='Поиск по нику' onChange={handleSearch} />
+                    <select className={styles.select} onChange={handleSearchPerm}>
+                        <option value="">Все роли</option>
+                        {permTypes.map((perm, index) => {
+                            return <option value={perm} key={index}>{perm}</option>
+                        })}
+                    </select>
+                </div>
                 {filteredAdminList.length === 0 ? <h3 className={styles.text}>Ничего не найдено!</h3> : <>
-                    <table className={tableStyles.table}>
-                        <tbody>
-                            {filteredAdminList.map((admin, index) => admin && (<tr key={index} onClick={() => {window.location.href = admin.url}} className={tableStyles.classic}>
-                                <th className={tableStyles.inline}><img src={`https://minotar.net/helm/${admin.nick}/250`} /> {admin.nick}</th>
-                                <th><img src={`/${getIcon(admin.permission)}`} /></th>
-                                <th>{admin.reports} шт.</th>
-                                <th>{admin.fullActive} мин.</th>
-                            </tr>))}
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th>Никнейм</th>
-                                <th>Должность</th>
-                                <th>Отчётов</th>
-                                <th>Наиграно</th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div className={styles.adminBlock}>
+                        <div className={`${styles.modal} ${styles.adminCard}`}>
+                            <img src={`https://minotar.net/helm/${filteredAdminList[openedModal].nick}/50`} className={styles.image} />
+                            <div className={`${styles.nickname} ${styles.text}`}>
+                                {filteredAdminList[openedModal].nick}
+                            </div>
+                            <div className={`${styles.text} ${styles.infoBox}`}>
+                                <div className={styles.item}>
+                                    Дата назначения: <span styles={styles.underline}>
+                                        {filteredAdminList[openedModal].date}
+                                    </span>
+                                </div>
+                                <div className={styles.item}>
+                                    Кол-во отчётов: <span styles={styles.underline}>
+                                        {filteredAdminList[openedModal].reports}
+                                    </span>
+                                </div>
+                            </div>
+                            <button onClick={handleRedirect}>
+                                {filteredAdminList[openedModal].urlName}
+                            </button>
+                            <div className={`${styles.permission} ${styles.modalCase}`} style={{backgroundColor: getColor({ node: filteredAdminList[openedModal].permission }), 
+                                                                    boxShadow: '0 0 10px ' + getColor({ node: filteredAdminList[openedModal].permission }), 
+                                                                    boxShadow: '0 0 20px ' + getColor({ node: filteredAdminList[openedModal].permission })}}>
+                                                                        {filteredAdminList[openedModal].permission}
+                            </div>
+                        </div>
+                        {filteredAdminList.map((admin, index) => {
+                            const color = getColor({ node: admin.permission });
+
+                            return <div className={`${styles.adminCard} ${styles.default}`} key={index} onClick={() => open({ index: index })}>
+                                <img src={`https://minotar.net/helm/${admin.nick}/50`} className={styles.image} />
+                                <div className={`${styles.nickname} ${styles.text}`}>{admin.nick}</div>
+                                <div className={styles.permission} style={{backgroundColor: color, 
+                                                                            boxShadow: '0 0 10px ' + color, boxShadow: '0 0 20px ' + color}}>{admin.permission}</div>
+                            </div>
+                        })}
+                    </div>
                 </>}
             </div>
         </>

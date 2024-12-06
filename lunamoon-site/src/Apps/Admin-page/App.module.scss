@@ -1,16 +1,126 @@
 $secondary: white;
+$shadow: rgba($color: #000000, $alpha: 0.35);
 
 .mainBlock {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     display: flex;
-    flex-flow: column;
-    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3s;
+    margin: 1% 0;
+}
 
-    & *:not(table) {
-        box-sizing: border-box;
-        margin-bottom: 1%;
+.adminBlock {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1% 0;
+    padding: 1% 1%;
+    background: rgba($color: #ffffff, $alpha: 0.1);
+    border-radius: 12px;
+    transition: 0.3s;
+
+    &:hover {
+        .adminCard:not(:hover):not(.modal) {
+            filter: blur(2px);
+        }
+    }
+}
+
+.adminCard {
+    flex: 1 1 100%;
+    flex-basis: 1;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba($color: #000000, $alpha: 0.15);
+    margin: 1%;
+    padding-top: 2%;
+    border-radius: 12px;
+    transition: 0.3s;
+
+    box-shadow: 0 0 10px $shadow,
+                0 0 20px $shadow,
+                0 0 35px $shadow;
+
+    &.default {
+        max-width: 160px;
+        min-width: 160px;
+    }
+
+    &.modal {
+        
+        order: -1;
+        transition: 0.3s;
+        margin-bottom: 8%;
+
+        & .infoBox {
+            display: flex;
+            justify-content: space-between;
+
+            & .item {
+                margin: 0 2%;
+            }
+        }
+
+        & button {
+            margin-top: 3%;
+            background: none;
+            font-size: 100%;
+            font-family: 'Gilroy-light';
+
+            border: none;
+            border-bottom: 2px solid $secondary;
+            min-width: 15%;
+            transition: 0.3s;
+
+            &:hover {
+                border-bottom: 2px solid rgb(176, 20, 207);
+                border-radius: 3px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.05);
+        box-shadow: 0 0 10px $shadow,
+                0 0 20px $shadow,
+                0 0 35px $shadow,
+                0 0 50px $shadow;
+    }
+}
+
+.nickname {
+    transition: 0.3s;
+    font-size: 120%;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.permission {
+    font-family: 'Gilroy-light';
+    display: block;
+    margin: auto 0 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+    transition: 0.3s;
+
+    &.modalCase {
+        margin-top: 1%;
+    }
+
+    &:not(.modalCase) {
+        margin-top: 10%;
     }
 }
 
@@ -21,4 +131,16 @@ $secondary: white;
             0 0 20px $secondary,
             0 0 40px $secondary,
             0 0 80px $secondary;
+}
+
+@media only screen and (max-width: 400px) {
+    .modal {
+        font-size: 90%;
+    }
+}
+
+@media only screen and (max-width: 353px) {
+    .mainBlock .filter .select {
+        display: none;
+    }
 }
