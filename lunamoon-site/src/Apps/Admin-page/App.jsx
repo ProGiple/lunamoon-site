@@ -51,17 +51,17 @@ export function AdminPage() {
         return '#ff3bce';
     }
 
-    const filteredAdminList = useMemo(() => {
-        return unFilteredAdminList.sort((a, b) => getPermWeight({ node: b.permission }) - getPermWeight({ node: a.permission })).filter(
-            (admin) => (searchNick === '' || admin.nick.toLowerCase().startsWith(searchNick.toLowerCase())) && (searchPermission === '' || admin.permission === searchPermission));
-    }, [unFilteredAdminList, searchNick, allPermissions])
-
     const [openedModal, setOpenedModal] = useState(0);
     const open = ({ index = 0 }) => {
         if (openedModal !== index) {
             setOpenedModal(index);
         }
     }
+
+    const filteredAdminList = useMemo(() => {
+        return unFilteredAdminList.sort((a, b) => getPermWeight({ node: b.permission }) - getPermWeight({ node: a.permission })).filter(
+            (admin) => (searchNick === '' || admin.nick.toLowerCase().startsWith(searchNick.toLowerCase())) && (searchPermission === '' || admin.permission === searchPermission));
+    }, [unFilteredAdminList, searchNick, allPermissions, openedModal])
 
     const handleRedirect = () => {
         window.open(filteredAdminList[openedModal].url, '_blank');
@@ -79,33 +79,38 @@ export function AdminPage() {
                         })}
                     </select>
                 </div>
-                {filteredAdminList.length === 0 ? <h3 className={styles.text}>Ничего не найдено!</h3> : <>
+                {filteredAdminList.length === 0 || filteredAdminList === null ? <h3 className={styles.text}>Ничего не найдено!</h3> : <>
                     <div className={styles.adminBlock}>
                         <div className={`${styles.modal} ${styles.adminCard}`}>
-                            <img src={`https://minotar.net/helm/${filteredAdminList[openedModal].nick}/50`} className={styles.image} />
-                            <div className={`${styles.nickname} ${styles.text}`}>
-                                {filteredAdminList[openedModal].nick}
-                            </div>
-                            <div className={`${styles.text} ${styles.infoBox}`}>
-                                <div className={styles.item}>
-                                    Дата назначения: <span styles={styles.underline}>
-                                        {filteredAdminList[openedModal].date}
-                                    </span>
-                                </div>
-                                <div className={styles.item}>
-                                    Кол-во отчётов: <span styles={styles.underline}>
-                                        {filteredAdminList[openedModal].reports}
-                                    </span>
-                                </div>
-                            </div>
-                            <button onClick={handleRedirect}>
-                                {filteredAdminList[openedModal].urlName}
-                            </button>
-                            <div className={`${styles.permission} ${styles.modalCase}`} style={{backgroundColor: getColor({ node: filteredAdminList[openedModal].permission }), 
-                                                                    boxShadow: '0 0 10px ' + getColor({ node: filteredAdminList[openedModal].permission }), 
-                                                                    boxShadow: '0 0 20px ' + getColor({ node: filteredAdminList[openedModal].permission })}}>
-                                                                        {filteredAdminList[openedModal].permission}
-                            </div>
+                        {openedModal !== null && openedModal < filteredAdminList.length && (
+                                <>
+                                    <img src={`https://minotar.net/helm/${filteredAdminList[openedModal].nick}/50`} className={styles.image} />
+                                    <div className={`${styles.nickname} ${styles.text}`}>
+                                        {filteredAdminList[openedModal].nick}
+                                    </div>
+                                    <div className={`${styles.text} ${styles.infoBox}`}>
+                                        <div className={styles.item}>
+                                            Дата назначения: <span styles={styles.underline}>
+                                                {filteredAdminList[openedModal].date}
+                                            </span>
+                                        </div>
+                                        <div className={styles.item}>
+                                            Кол-во отчётов: <span styles={styles.underline}>
+                                                {filteredAdminList[openedModal].reports}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button onClick={handleRedirect}>
+                                        {filteredAdminList[openedModal].urlName}
+                                    </button>
+                                    <div className={`${styles.permission} ${styles.modalCase}`} style={{backgroundColor: getColor({ node: filteredAdminList[openedModal].permission }), 
+                                                                            boxShadow: '0 0 10px ' + getColor({ node: filteredAdminList[openedModal].permission }), 
+                                                                            boxShadow: '0 0 20px ' + getColor({ node: filteredAdminList[openedModal].permission })}}>
+                                                                                {filteredAdminList[openedModal].permission}
+                                    </div>
+                                </>
+                            )}
+                            
                         </div>
                         {filteredAdminList.map((admin, index) => {
                             const color = getColor({ node: admin.permission });
