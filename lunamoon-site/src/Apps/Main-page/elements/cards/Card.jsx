@@ -2,6 +2,13 @@ import { useMemo, useState } from 'react';
 import styles from './Card.module.scss';
 import modalStyles from './Modal.module.scss';
 
+const promocodes = [
+    { tag: "OPEN30!", sale: 30, allUses: 912, maxUses: 915 }, /* sale: 30 = 30% скидка */
+    { tag: "PROGIPLE110", sale: 110, allUses: 912, maxUses: -1 },
+    { tag: "DAKOTA has", sale: -20, allUses: 912, maxUses: -1 },
+    { tag: "Siozy", sale: 90, allUses: 912, maxUses: -1 },
+]
+
 export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}] }) {
     const costs = useMemo(() => {
         return [sellItem.cost1, sellItem.cost2, sellItem.cost3];
@@ -20,13 +27,6 @@ export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}]
         const [visibleContent, setVisibleContent] = useState(false);
         const [visibleModal, setVisibleModal] = useState(false);
         const [selectedNum, setSelectedNum] = useState(0);
-
-        const promocodes = [
-            { tag: "OPEN30!", sale: 30, allUses: 912, maxUses: 915 }, /* sale: 30 = 30% скидка */
-            { tag: "PROGIPLE110", sale: 110, allUses: 912, maxUses: -1 },
-            { tag: "DAKOTA has", sale: -20, allUses: 912, maxUses: -1 },
-            { tag: "Siozy", sale: 90, allUses: 912, maxUses: -1 },
-        ]
         
         const [nickName, setNickName] = useState("");
         const [promo, setPromo] = useState("");

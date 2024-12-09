@@ -29,11 +29,13 @@ export function AdminPage() {
 
     const [searchNick, setSearchNick] = useState("");
     const handleSearch = (event) => {
+        open(0);
         setSearchNick(event.target.value);
     }
 
     const [searchPermission, setSearchPermission] = useState("");
     const handleSearchPerm = (event) => {
+        open(0);
         setSearchPermission(event.target.value);
     }
 

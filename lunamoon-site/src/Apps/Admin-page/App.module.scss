@@ -1,6 +1,10 @@
 $secondary: white;
 $shadow: rgba($color: #000000, $alpha: 0.35);
 
+.hide {
+    opacity: 0;
+}
+
 .mainBlock {
     width: 100%;
     display: flex;
