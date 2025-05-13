@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 export function Header() {
     const navigate = useNavigate();
 
-    const online = 100;
+    const online = 300;
     const maxOnline = 500;
 
     const getBarOnline = useMemo(() => {
@@ -29,7 +29,7 @@ export function Header() {
                 </div>
 
                 <div className={styles.flex_item}>
-                    <h3 className={styles.headerText} onClick={() => navigate('/rules')}>Правила и FAQ</h3>
+                    <h3 className={styles.headerText} onClick={() => navigate('/faq')}>Правила и FAQ</h3>
                 </div>
 
                 <div className={`${styles.online}`}>

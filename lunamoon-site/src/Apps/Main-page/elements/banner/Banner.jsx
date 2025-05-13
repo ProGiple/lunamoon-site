@@ -2,7 +2,7 @@ import { useState } from "react";
 import bannerStyles from "./banner.module.scss";
 
 export function Banner() {
-    const [buttonText, setButtonText] = useState("mc.lunamoon.space");
+    const [buttonText, setButtonText] = useState("mc.satespace.tech");
 
     const handleCopy = () => {
         let text = "Скопировано!";
@@ -24,7 +24,7 @@ export function Banner() {
                 <div className={bannerStyles.clickable}>
                     <div className={bannerStyles.text}>
                         <h2 className={bannerStyles.header}>Понравился наш сумеречный проект?</h2>
-                        <h3>Донат — Основной источник заработка с сервера и именно он позволяет обеспечивать сервер всеми необходимыми потребностями и обновлениями!</h3>
+                        <h3>Поддержи сервер своей денюжкой в магазине ниже:</h3>
                     </div>
                     <div className={bannerStyles.buttons}>
                         <button onClick={() => {handleCopy()}}>

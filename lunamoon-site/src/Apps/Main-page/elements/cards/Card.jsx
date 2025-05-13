@@ -45,7 +45,7 @@ export function Card({ sellItem=[{type, name, lore, cost1, cost2, cost3, image}]
                     localCost = costs[selectedNum] * (1 - (promocode.sale / 100));
                 }
             })
-            if (localCost <= 5) localCost = 66666;
+            if (localCost <= 1) localCost = 66666;
             return Math.round(localCost);
         }, [promocodes, promo, selectedNum])
 

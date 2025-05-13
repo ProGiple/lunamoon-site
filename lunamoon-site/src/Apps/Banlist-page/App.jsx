@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import styles from './App.module.scss'
 import tableStyles from './table.module.scss'
 
-const sliceAmount = -25
+const sliceAmount = -7
 const sliceData = ({ varData=[], varPage }) => {
     if (varPage > 1) {
         return varData.slice(sliceAmount * varPage, sliceAmount * (varPage - 1))
@@ -15,11 +15,11 @@ export function BanListPage() {
         { bannedNick: 'ProGiple', adminNick: 'Dakota_', reason: 'захотел', date: '09.11.2024', end: '08.10.2023', type: 'Мут' },
         { bannedNick: 'Dakota_', adminNick: 'JESTER', reason: 'нарушение правил', date: '10.11.2024', end: '10.12.2024', type: 'Бан' },
         { bannedNick: 'JESTER', adminNick: 'ProGiple', reason: 'спам в чате', date: '11.11.2025', end: '11.12.2024', type: 'Мут' },
-        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
-        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
-        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
-        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
-        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'даунизм', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
+        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'пример причины', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
+        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'пример причины', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
+        { bannedNick: 'strelka_', adminNick: 'NASTYA_', reason: 'пример причины', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
+        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'пример причины', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
+        { bannedNick: 'strelka_', adminNick: 'Dakota_', reason: 'пример причины', date: '11.11.2024', end: '24.05.2026', type: 'Варн'},
         { bannedNick: 'ProGiple', adminNick: 'Console', reason: '[А.Ч.] 1.1 - Игра с запрещённым ПО', date: '09.11.2024', end: '08.10.2023', type: 'Мут' },
     ];
 

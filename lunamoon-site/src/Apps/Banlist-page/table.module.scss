@@ -1,5 +1,5 @@
 $primary: white;
-$sec: rgb(202, 102, 223);
+$sec: rgb(127, 102, 228);
 
 .table {
     border-collapse: collapse;
@@ -55,8 +55,7 @@ tr.classic:nth-last-of-type(even) {
 tr.classic:hover {
     text-shadow: 0 0 10px $primary,
                 0 0 20px $primary;
-    box-shadow: 0 0 5px $sec,
-                0 0 10px $sec,
+    box-shadow: 
                 0 0 20px $sec,
                 0 0 40px $sec,
                 inset 0 0 5px $sec,
@@ -77,7 +76,7 @@ tbody:hover tr:not(:hover) {
 
 @media screen and (max-width: 1111px) {
     .table {
-        min-width: 90%;
+        max-width: 90%;
     }
 }
 

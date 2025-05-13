@@ -10,6 +10,7 @@ import { Header } from './Apps/elements/Header';
 import { ErrorPage } from './Apps/Error-page/App';
 import { BanListPage } from './Apps/Banlist-page/App';
 import { AdminPage } from './Apps/Admin-page/App';
+import { QuestionPage } from './Apps/Question-Page/App';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <><Header /><AdminPage /></>
+  },
+  {
+    path: "/faq",
+    element: <><Header /><QuestionPage /></>
   }
 ])
 

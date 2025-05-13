@@ -5,7 +5,7 @@ export function AdminPage() {
     const allPermissions = [
         { level: 25, name: 'Владелец', color: '#ff3bce' },
         { level: 15, name: 'Тех. админ', color: '#ff3bce' },
-        { level: 35, name: 'Пидор', color: '#ff3bce' }
+        { level: 35, name: 'Модератор', color: '#ff3bce' }
     ]
 
     const permTypes = [] = useMemo(() => {
@@ -24,7 +24,7 @@ export function AdminPage() {
         { nick: 'runercx', permission: 'Тех. админ', url: 'https://t.me/runercx', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
         { nick: 'Dakota_', permission: 'Владелец', url: 'https://t.me/novasparkle', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
         { nick: 'Dakota_', permission: 'Владелец', url: 'https://t.me/novasparkle', urlName: 'Страничка ВК', reports: 999, date: '24/10/2023' },
-        { nick: 'strelka_', permission: 'Пидор', url: 'https://t.me/pidoras', urlName: 'Телега', reports: 1, date: '24/10/2025' }
+        { nick: 'strelka_', permission: 'Модератор', url: 'https://t.me/pidoras', urlName: 'Телега', reports: 1, date: '24/10/2025' }
     ]
 
     const [searchNick, setSearchNick] = useState("");
