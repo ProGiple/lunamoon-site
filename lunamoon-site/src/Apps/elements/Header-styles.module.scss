@@ -96,7 +96,7 @@ $secondary: white;
 }
 
 .bar {
-    width: 120%;
+    width: 180px;
     height: 5px;
     background: rgba($color: #ffffff, $alpha: 0.1);
     border-radius: 15px;
@@ -112,6 +112,33 @@ $secondary: white;
     box-shadow: 0 0 10px 3px $primary,
             0 0 20px 3px $primary,
             0 0 40px 3px $primary;
+
+    &.RED {
+        $red: rgba(254, 62, 23, 0.847);
+        background-color: $red;
+
+        box-shadow: 0 0 10px 3px $red,
+                0 0 20px 3px $red,
+                0 0 40px 3px $red;
+    }
+
+    &.YELLOW {
+        $red: rgba(255, 255, 15, 0.847);
+        background-color: $red;
+
+        box-shadow: 0 0 10px 3px $red,
+                0 0 20px 3px $red,
+                0 0 40px 3px $red;
+    }
+
+    &.GREEN {
+        $red: rgba(15, 255, 55, 0.847);
+        background-color: $red;
+
+        box-shadow: 0 0 10px 3px $red,
+                0 0 20px 3px $red,
+                0 0 40px 3px $red;
+    }
 }
 
 @media screen and (max-width: 1240px) {

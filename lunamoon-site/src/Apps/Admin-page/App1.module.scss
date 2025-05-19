@@ -1,0 +1,28 @@
+$r: 18px;
+
+.screen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3s;
+    margin: 1% 0;
+}
+
+.adminbox {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $r;
+}
+
+.admincard {
+    width: 90%;
+    background-color: white;
+    height: 150px;
+    margin: 15px 0;
+    border-radius: $r;
+}
